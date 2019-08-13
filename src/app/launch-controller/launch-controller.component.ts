@@ -20,7 +20,6 @@ export class LaunchControllerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updatePageControls();
     this.getLaunches();
   }
 
@@ -28,7 +27,7 @@ export class LaunchControllerComponent implements OnInit {
     this.loading = true;
     this.launchesService.getLaunches().subscribe(
       launches => {
-        this.launches = launches;
+        this.launches = launches.body;
       },
       error => {
         this.errorMsg = error;
@@ -36,6 +35,7 @@ export class LaunchControllerComponent implements OnInit {
       },
       () => {
         this.loading = false;
+        this.updatePageControls();
       });
   }
 
@@ -47,19 +47,16 @@ export class LaunchControllerComponent implements OnInit {
 
   onBackClick() {
     this.launchesService.goToPrevPage();
-    this.updatePageControls();
     this.getLaunches();
   }
 
   onNextClick() {
     this.launchesService.goToNextPage();
-    this.updatePageControls();
     this.getLaunches();
   }
 
   onToggleSort(sortOrder) {
     this.launchesService.setSortOrder(sortOrder);
-    this.updatePageControls();
     this.getLaunches();
   }
 }

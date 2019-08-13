@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { Launch } from './launch';
 
@@ -11,7 +11,7 @@ import { Launch } from './launch';
 })
 export class LaunchesService {
   launchesUrl = 'https://api.spacexdata.com/v3/launches';
-  total = 103; // TODO - get value from Header "spacex-api-count"
+  total = 0;
   limit = 10;
   offset = 0;
   order = 'asc';
@@ -54,17 +54,17 @@ export class LaunchesService {
   }
 
   // get all launches based on limit and offset and order
-  getLaunches(): Observable<Launch[]> {
+  getLaunches(): Observable<HttpResponse<Launch[]>> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('limit', this.limit.toString());
     httpParams = httpParams.append('offset', this.offset.toString());
     httpParams = httpParams.append('order', this.order);
-    const options = {
-      params: httpParams
-    };
 
-    return this.http.get<Launch[]>(this.launchesUrl, options)
+    return this.http.get<Launch[]>(this.launchesUrl, { observe: 'response', params: httpParams})
       .pipe(
+        tap((res) => {
+          this.total = parseInt(res.headers.get('spacex-api-count'))
+        }),
         catchError(this.handleError)
       )
   }
