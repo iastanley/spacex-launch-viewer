@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+}
+
+.pagination-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-control div {
+  width: 100px;
+  text-align: center;
+}
+
+.pagination-control i {
+  cursor: pointer;
+}
+

@@ -23,3 +23,11 @@ app-root {
   background: #f0f0f0;
   margin-top: 80px;
 }
+
+.main-app-content {
+  margin: auto;
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  background: red;
+}

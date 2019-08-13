@@ -1,0 +1,11 @@
+<div class="pagination-control">
+  <i 
+  class="material-icons"
+  [ngStyle]="{visibility: currentPage > 0 ? 'visible' : 'hidden'}" 
+  (click)="pageBack()">arrow_back_ios</i>
+  <div>Page {{ currentPage }}</div>
+  <i 
+  class="material-icons" 
+  [ngStyle]="{visibility: currentPage < maxPage ? 'visible' : 'hidden'}"
+  (click)="pageForward()">arrow_forward_ios</i>
+</div>
