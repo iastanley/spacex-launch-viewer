@@ -4,7 +4,9 @@ table {
   margin: auto;
   background: #dddddd;
   padding: 15px;
+  border-collapse: collapse;
 }
+
 
 th, td {
   text-align: center;
@@ -16,6 +18,20 @@ td.overflow {
   max-width: 500px;
   overflow-wrap: normal;
   text-align: left;
+}
+
+tbody tr {
+  color: #555;
+}
+
+tbody tr.clickable {
+  color: #000;
+}
+
+tbody tr.clickable:hover {
+  background: grey;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* Message Container Styles */

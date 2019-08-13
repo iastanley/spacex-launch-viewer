@@ -18,7 +18,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let launch of launches">
+    <tr 
+      *ngFor="let launch of launches" 
+      (click)="openPressLink(launch.links.presskit)"
+      [ngClass]="{clickable: !!launch.links.presskit}">
       <td>{{ launch.flight_number}}</td>
       <td>{{ launch.launch_year }}</td>
       <td>{{ launch.rocket.rocket_name }}</td>

@@ -12,4 +12,11 @@ export class LaunchTableComponent {
   @Input() loading: boolean;
   @Input() sortOrder: string;
   @Input() errorMsg: string;
+
+  openPressLink(pressLink: string) {
+    if (pressLink) {
+      window.open(pressLink)
+    }
+    
+  }
 }
