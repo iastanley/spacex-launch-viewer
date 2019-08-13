@@ -1,13 +1,14 @@
 <!-- message for loading, no data, and error messages -->
-<div class="message-container">
+<div class="message-container" *ngIf="!launches.length || loading || errorMsg">
     <div class="info-message" *ngIf="loading">Loading...</div>
-    <div class="info-message" *ngIf="launches.length === 0 && !loading && !errorMsg">No Launches Found</div>
+    <div class="info-message" *ngIf="!launches.length && !loading && !errorMsg">No Launches Found</div>
     <div 
       class="info-message error-msg" 
       *ngIf="!loading && errorMsg">{{ errorMsg }}</div>
   </div>
 
-<table *ngIf="launches.length">
+<!-- show table view if loading completed successfully and returned data -->
+<table *ngIf="launches.length && !loading && !errorMsg">
   <thead>
     <tr>
       <th>Flight Number</th>
