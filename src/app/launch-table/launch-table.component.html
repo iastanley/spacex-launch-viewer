@@ -1,0 +1,23 @@
+<!-- message for loading, no data, and error messages -->
+<div class="message-container">
+  <div class="info-message" *ngIf="launches.length === 0">No Launches Found</div>
+</div>
+
+<table *ngIf="launches.length">
+  <thead>
+    <tr>
+      <th>Flight Number</th>
+      <th>Flight Year</th>
+      <th>Rocket Name</th>
+      <th class="overflow">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let launch of launches">
+      <td>{{ launch.flight_number}}</td>
+      <td>{{ launch.launch_year }}</td>
+      <td>{{ launch.rocket.rocket_name }}</td>
+      <td class="overflow">{{ launch.details }}</td>
+    </tr>
+  </tbody>
+</table>

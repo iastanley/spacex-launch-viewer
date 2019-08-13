@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+  margin: auto;
+  background: #dddddd;
+  padding: 15px;
+}
+
+th, td {
+  text-align: center;
+  padding: 5px;
+  vertical-align: top;
+}
+
+td.overflow {
+  max-width: 500px;
+  overflow-wrap: normal;
+  text-align: left;
+}

@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { LaunchTableComponent } from './launch-table/launch-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    LaunchTableComponent
   ],
   imports: [
     BrowserModule
