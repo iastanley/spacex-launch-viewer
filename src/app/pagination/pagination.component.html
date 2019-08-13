@@ -1,0 +1,10 @@
+<i 
+class="material-icons"
+[ngStyle]="{visibility: currentPage > 1 ? 'visible' : 'hidden'}" 
+(click)="backClick.emit()">chevron_left</i>
+<div>Page {{ currentPage }} out of {{ maxPage }}</div>
+<i 
+class="material-icons" 
+[ngStyle]="{visibility: currentPage < maxPage ? 'visible' : 'hidden'}"
+(click)="nextClick.emit()">chevron_right</i>
+

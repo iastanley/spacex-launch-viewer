@@ -1,0 +1,35 @@
+<!-- message for loading, no data, and error messages -->
+<div class="message-container" *ngIf="!launches.length || loading || errorMsg">
+    <div class="info-message" *ngIf="loading">Loading...</div>
+    <div class="info-message" *ngIf="!launches.length && !loading && !errorMsg">No Launches Found</div>
+    <div 
+      class="info-message error-msg" 
+      *ngIf="!loading && errorMsg">
+      Something went wrong!
+      <br>
+      {{ errorMsg }}
+    </div>
+  </div>
+
+<!-- show table view if loading completed successfully and returned data -->
+<table *ngIf="launches.length && !loading && !errorMsg">
+  <thead>
+    <tr>
+      <th>Flight Number</th>
+      <th>Flight Year</th>
+      <th>Rocket Name</th>
+      <th class="overflow">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr 
+      *ngFor="let launch of launches" 
+      (click)="openPressLink(launch.links.presskit)"
+      [ngClass]="{clickable: !!launch.links.presskit}">
+      <td>{{ launch.flight_number}}</td>
+      <td>{{ launch.launch_year }}</td>
+      <td>{{ launch.rocket.rocket_name }}</td>
+      <td class="overflow">{{ launch.details }}</td>
+    </tr>
+  </tbody>
+</table>

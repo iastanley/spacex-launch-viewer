@@ -1,0 +1,13 @@
+<div>Sort</div>
+
+<!-- up icon -->
+<i
+  *ngIf="sortOrder === 'desc'"
+  (click)="toggleSort.emit('asc')"
+  class="material-icons">expand_less</i>
+
+<!-- down icon -->
+<i 
+  *ngIf="sortOrder === 'asc'"
+  (click)="toggleSort.emit('desc')"
+  class="material-icons">expand_more</i>

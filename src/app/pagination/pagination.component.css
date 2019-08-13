@@ -1,0 +1,23 @@
+/* :host {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+} */
+
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+div {
+  width: 150px;
+  text-align: center;
+}
+
+i {
+  cursor: pointer;
+}
+

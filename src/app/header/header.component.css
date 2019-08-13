@@ -1,0 +1,10 @@
+:host {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  background-color: #303f56;
+}

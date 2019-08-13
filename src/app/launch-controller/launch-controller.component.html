@@ -1,0 +1,22 @@
+<div class="controls-container">
+  <!-- sorting controls -->
+  <app-sort
+    [sortOrder]="sortOrder"
+    (toggleSort)="onToggleSort($event)">
+  </app-sort>
+
+  <!-- pagination controls -->
+  <app-pagination
+    [currentPage]="currentPage"
+    [maxPage]="maxPage"
+    (backClick)="onBackClick()"
+    (nextClick)="onNextClick()">
+  </app-pagination>
+</div>
+
+<!-- lauch table view -->
+<app-launch-table
+  [launches]="launches"
+  [loading]="loading"
+  [errorMsg]="errorMsg">
+</app-launch-table>
