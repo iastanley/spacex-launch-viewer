@@ -4,7 +4,11 @@
     <div class="info-message" *ngIf="!launches.length && !loading && !errorMsg">No Launches Found</div>
     <div 
       class="info-message error-msg" 
-      *ngIf="!loading && errorMsg">{{ errorMsg }}</div>
+      *ngIf="!loading && errorMsg">
+      Something went wrong!
+      <br>
+      {{ errorMsg }}
+    </div>
   </div>
 
 <!-- show table view if loading completed successfully and returned data -->

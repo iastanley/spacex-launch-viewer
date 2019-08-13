@@ -1,11 +1,10 @@
-<div class="pagination-control">
-  <i 
-  class="material-icons"
-  [ngStyle]="{visibility: currentPage > 1 ? 'visible' : 'hidden'}" 
-  (click)="backClick.emit()">arrow_back_ios</i>
-  <div>Page {{ currentPage }} out of {{ maxPage }}</div>
-  <i 
-  class="material-icons" 
-  [ngStyle]="{visibility: currentPage < maxPage ? 'visible' : 'hidden'}"
-  (click)="nextClick.emit()">arrow_forward_ios</i>
-</div>
+<i 
+class="material-icons"
+[ngStyle]="{visibility: currentPage > 1 ? 'visible' : 'hidden'}" 
+(click)="backClick.emit()">chevron_left</i>
+<div>Page {{ currentPage }} out of {{ maxPage }}</div>
+<i 
+class="material-icons" 
+[ngStyle]="{visibility: currentPage < maxPage ? 'visible' : 'hidden'}"
+(click)="nextClick.emit()">chevron_right</i>
+

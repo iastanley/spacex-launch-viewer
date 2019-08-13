@@ -9,6 +9,7 @@ import { LaunchTableComponent } from './launch-table/launch-table.component';
 import { LaunchControllerComponent } from './launch-controller/launch-controller.component';
 
 import { LaunchesService } from './launches.service';
+import { SortComponent } from './sort/sort.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LaunchesService } from './launches.service';
     HeaderComponent,
     PaginationComponent,
     LaunchTableComponent,
-    LaunchControllerComponent
+    LaunchControllerComponent,
+    SortComponent
   ],
   imports: [
     BrowserModule,

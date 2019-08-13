@@ -41,6 +41,7 @@ tbody tr.clickable:hover {
   flex-direction: column;
   justify-content: center;
   min-height: 500px;
+  padding: 20px;
 }
 
 .info-message {

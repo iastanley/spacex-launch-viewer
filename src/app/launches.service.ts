@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Launch } from './launch';
@@ -36,20 +36,9 @@ export class LaunchesService {
     return this.order;
   }
 
-  // get all launches based on limit and offset and order
-  getLaunches(): Observable<Launch[]> {
-    let httpParams = new HttpParams();
-    httpParams = httpParams.append('limit', this.limit.toString());
-    httpParams = httpParams.append('offset', this.offset.toString());
-    httpParams = httpParams.append('order', this.order);
-    const options = {
-      params: httpParams
-    };
-
-    return this.http.get<Launch[]>(this.launchesUrl, options)
-      // .pipe(
-      //   catchError(() => console.error('Failed to load launches'))
-      // )
+  setSortOrder(order: 'asc' | 'desc') {
+    this.offset = 0; // return to first page when changing sort order
+    this.order = order;
   }
 
   goToNextPage() {
@@ -64,13 +53,35 @@ export class LaunchesService {
     }
   }
 
-  setOrderAscending() {
-    this.offset = 0; // return to first page when changing sort order
-    this.order = 'asc';
+  // get all launches based on limit and offset and order
+  getLaunches(): Observable<Launch[]> {
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append('limit', this.limit.toString());
+    httpParams = httpParams.append('offset', this.offset.toString());
+    httpParams = httpParams.append('order', this.order);
+    const options = {
+      params: httpParams
+    };
+
+    return this.http.get<Launch[]>(this.launchesUrl, options)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
 
-  setOrderDescending() {
-    this.offset = 0;
-    this.order = 'desc';
-  }
+  private handleError(error: HttpErrorResponse) {
+    let errorMsg;
+    
+    if (error.error instanceof ErrorEvent) {
+      errorMsg = error.error.message;
+      console.error('An error occurred:', error.error.message);
+    } else {
+      errorMsg = `Server returned error with status code ${error.status}.`;
+      console.error(
+        `Server returned ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    
+    return throwError(errorMsg);
+  };
 }

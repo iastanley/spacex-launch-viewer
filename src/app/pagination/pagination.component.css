@@ -1,21 +1,23 @@
-:host {
+/* :host {
   display: flex;
   justify-content: flex-end;
   height: 50px;
-}
+} */
 
-.pagination-control {
+
+:host {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 200px;
 }
 
-.pagination-control div {
+div {
   width: 150px;
   text-align: center;
 }
 
-.pagination-control i {
+i {
   cursor: pointer;
 }
 

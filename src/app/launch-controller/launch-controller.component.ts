@@ -20,33 +20,46 @@ export class LaunchControllerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updatePages();
+    this.updatePageControls();
     this.getLaunches();
   }
 
   getLaunches() {
     this.loading = true;
-    this.launchesService.getLaunches().subscribe(launches => {
-      this.launches = launches;
-      this.loading = false
-    })
+    this.launchesService.getLaunches().subscribe(
+      launches => {
+        this.launches = launches;
+      },
+      error => {
+        this.errorMsg = error;
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
+      });
   }
 
-  updatePages() {
+  updatePageControls() {
     this.currentPage = this.launchesService.getOffset() / this.launchesService.getLimit() + 1;
     this.maxPage = Math.ceil(this.launchesService.getTotal() / this.launchesService.getLimit());
+    this.sortOrder = this.launchesService.getSortOrder();
   }
 
   onBackClick() {
     this.launchesService.goToPrevPage();
-    this.updatePages();
+    this.updatePageControls();
     this.getLaunches();
   }
 
   onNextClick() {
     this.launchesService.goToNextPage();
-    this.updatePages();
+    this.updatePageControls();
     this.getLaunches();
   }
 
+  onToggleSort(sortOrder) {
+    this.launchesService.setSortOrder(sortOrder);
+    this.updatePageControls();
+    this.getLaunches();
+  }
 }
