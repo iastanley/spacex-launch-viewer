@@ -1,7 +1,11 @@
 <!-- message for loading, no data, and error messages -->
 <div class="message-container">
-  <div class="info-message" *ngIf="launches.length === 0">No Launches Found</div>
-</div>
+    <div class="info-message" *ngIf="loading">Loading...</div>
+    <div class="info-message" *ngIf="launches.length === 0 && !loading && !errorMsg">No Launches Found</div>
+    <div 
+      class="info-message error-msg" 
+      *ngIf="!loading && errorMsg">{{ errorMsg }}</div>
+  </div>
 
 <table *ngIf="launches.length">
   <thead>

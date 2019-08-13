@@ -1,0 +1,16 @@
+<!-- page controls -->
+<app-pagination
+  [currentPage]="currentPage"
+  [maxPage]="maxPage"
+  (backClick)="onBackClick()"
+  (nextClick)="onNextClick()">
+</app-pagination>
+
+<!-- lauch table view -->
+<app-launch-table
+  *ngIf="launches.length && !loading"
+  [sortOrder]="sortOrder"
+  [launches]="launches"
+  [loading]="loading"
+  [errorMsg]="errorMsg">
+</app-launch-table>
