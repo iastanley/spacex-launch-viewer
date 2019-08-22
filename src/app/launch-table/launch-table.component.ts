@@ -15,8 +15,8 @@ export class LaunchTableComponent {
 
   openPressLink(pressLink: string) {
     if (pressLink) {
-      window.open(pressLink)
+      window.open(pressLink);
     }
-    
+
   }
 }

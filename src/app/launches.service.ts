@@ -66,12 +66,12 @@ export class LaunchesService {
           this.total = parseInt(res.headers.get('spacex-api-count'))
         }),
         catchError(this.handleError)
-      )
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
     let errorMsg;
-    
+
     if (error.error instanceof ErrorEvent) {
       errorMsg = error.error.message;
       console.error('An error occurred:', error.error.message);
@@ -81,7 +81,7 @@ export class LaunchesService {
         `Server returned ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    
+
     return throwError(errorMsg);
   };
 }
